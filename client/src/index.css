@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(210, 40%, 6%);
+  --foreground: hsl(210, 40%, 98%);
+  --muted: hsl(210, 40%, 15%);
+  --muted-foreground: hsl(210, 40%, 65%);
+  --popover: hsl(210, 40%, 8%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --card: hsl(210, 40%, 11%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --border: hsl(210, 40%, 20%);
+  --input: hsl(210, 40%, 20%);
+  --primary: hsl(147, 50%, 47%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(210, 40%, 15%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(210, 40%, 15%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 62.8%, 54%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(210, 40%, 20%);
+  --radius: 0.5rem;
+  
+  /* Custom financial dashboard colors */
+  --dark-primary: hsl(210, 40%, 6%);
+  --dark-secondary: hsl(215, 28%, 17%);
+  --dark-surface: hsl(220, 13%, 32%);
+  --accent-green: hsl(147, 50%, 47%);
+  --accent-red: hsl(0, 62.8%, 54%);
+  --text-primary: hsl(210, 40%, 95%);
+  --text-secondary: hsl(215, 20%, 65%);
+}
+
+.dark {
+  --background: hsl(210, 40%, 6%);
+  --foreground: hsl(210, 40%, 98%);
+  --muted: hsl(210, 40%, 15%);
+  --muted-foreground: hsl(210, 40%, 65%);
+  --popover: hsl(210, 40%, 8%);
+  --popover-foreground: hsl(210, 40%, 98%);
+  --card: hsl(210, 40%, 11%);
+  --card-foreground: hsl(210, 40%, 98%);
+  --border: hsl(210, 40%, 20%);
+  --input: hsl(210, 40%, 20%);
+  --primary: hsl(147, 50%, 47%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(210, 40%, 15%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(210, 40%, 15%);
+  --accent-foreground: hsl(210, 40%, 98%);
+  --destructive: hsl(0, 62.8%, 54%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(210, 40%, 20%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    background-color: var(--dark-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  .bg-dark-primary {
+    background-color: var(--dark-primary);
+  }
+  
+  .bg-dark-secondary {
+    background-color: var(--dark-secondary);
+  }
+  
+  .bg-dark-surface {
+    background-color: var(--dark-surface);
+  }
+  
+  .text-accent-green {
+    color: var(--accent-green);
+  }
+  
+  .text-accent-red {
+    color: var(--accent-red);
+  }
+  
+  .text-text-primary {
+    color: var(--text-primary);
+  }
+  
+  .text-text-secondary {
+    color: var(--text-secondary);
+  }
+  
+  .border-dark-surface {
+    border-color: var(--dark-surface);
+  }
+  
+  .hover\:bg-dark-surface:hover {
+    background-color: var(--dark-surface);
+  }
+  
+  .hover\:bg-dark-primary:hover {
+    background-color: var(--dark-primary);
+  }
+  
+  .bg-accent-green {
+    background-color: var(--accent-green);
+  }
+  
+  .hover\:bg-green-600:hover {
+    background-color: hsl(147, 60%, 42%);
+  }
+}
