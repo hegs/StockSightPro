@@ -18,6 +18,16 @@ export class MemStorage implements IStorage {
     this.currentId = 1;
   }
 
+  clearCache(symbol?: string): void {
+    if (symbol) {
+      this.stocks.delete(symbol.toUpperCase());
+      this.historical.delete(symbol.toUpperCase());
+    } else {
+      this.stocks.clear();
+      this.historical.clear();
+    }
+  }
+
   async getStockData(symbol: string): Promise<StockData | undefined> {
     return this.stocks.get(symbol.toUpperCase());
   }
@@ -25,8 +35,15 @@ export class MemStorage implements IStorage {
   async saveStockData(insertData: InsertStockData): Promise<StockData> {
     const id = this.currentId++;
     const data: StockData = {
-      ...insertData,
       id,
+      symbol: insertData.symbol,
+      currentPrice: insertData.currentPrice ?? null,
+      marketCap: insertData.marketCap ?? null,
+      volume: insertData.volume ?? null,
+      peRatio: insertData.peRatio ?? null,
+      change: insertData.change ?? null,
+      changePercent: insertData.changePercent ?? null,
+      companyName: insertData.companyName ?? null,
       lastUpdated: new Date(),
     };
     this.stocks.set(insertData.symbol.toUpperCase(), data);
@@ -41,10 +58,16 @@ export class MemStorage implements IStorage {
     if (data.length === 0) return [];
     
     const symbol = data[0].symbol.toUpperCase();
-    const historicalRecords: HistoricalData[] = data.map((item, index) => ({
-      ...item,
+    const historicalRecords: HistoricalData[] = data.map((item) => ({
       id: this.currentId++,
       symbol,
+      date: item.date,
+      open: item.open ?? null,
+      high: item.high ?? null,
+      low: item.low ?? null,
+      close: item.close ?? null,
+      volume: item.volume ?? null,
+      changePercent: item.changePercent ?? null,
     }));
     
     this.historical.set(symbol, historicalRecords);
