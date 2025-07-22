@@ -23,12 +23,12 @@ Preferred communication style: Simple, everyday language.
 - **Language**: TypeScript with ES modules
 - **API Design**: RESTful API endpoints for stock data
 - **Data Fetching**: Yahoo Finance API integration
-- **Storage**: In-memory storage with interface for future database integration
+- **Storage**: PostgreSQL database with Drizzle ORM for persistent data storage
 
 ### Data Storage Solutions
-- **Current**: In-memory storage using Map data structures
-- **Schema**: Drizzle ORM with PostgreSQL schema definitions
-- **Future Ready**: Database abstraction layer prepared for PostgreSQL integration
+- **Current**: PostgreSQL database with Drizzle ORM (migrated from in-memory storage)
+- **Schema**: Drizzle ORM with PostgreSQL schema definitions for stock_data and historical_data tables
+- **Database**: Real-time data persistence with automatic cache management
 
 ## Key Components
 
@@ -91,9 +91,9 @@ Preferred communication style: Simple, everyday language.
 - **Deployment**: Single Node.js process serving both API and static files
 
 ### Database Integration
-- **Migration Ready**: Drizzle migrations configured for PostgreSQL
-- **Environment Variables**: DATABASE_URL required for production deployment
-- **Storage Abstraction**: Easy switch from in-memory to PostgreSQL storage
+- **Active**: PostgreSQL database fully integrated and operational
+- **Environment Variables**: DATABASE_URL and PostgreSQL credentials configured
+- **Storage**: DatabaseStorage implementation with persistent data storage and cache management
 
 ### Key Architectural Decisions
 

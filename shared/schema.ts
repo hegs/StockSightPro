@@ -5,12 +5,12 @@ import { z } from "zod";
 export const stockData = pgTable("stock_data", {
   id: serial("id").primaryKey(),
   symbol: text("symbol").notNull(),
-  currentPrice: decimal("current_price", { precision: 10, scale: 2 }),
+  currentPrice: text("current_price"),
   marketCap: text("market_cap"),
   volume: text("volume"),
-  peRatio: decimal("pe_ratio", { precision: 10, scale: 2 }),
-  change: decimal("change", { precision: 10, scale: 2 }),
-  changePercent: decimal("change_percent", { precision: 10, scale: 2 }),
+  peRatio: text("pe_ratio"),
+  change: text("change"),
+  changePercent: text("change_percent"),
   companyName: text("company_name"),
   lastUpdated: timestamp("last_updated").defaultNow(),
 });
@@ -19,12 +19,12 @@ export const historicalData = pgTable("historical_data", {
   id: serial("id").primaryKey(),
   symbol: text("symbol").notNull(),
   date: text("date").notNull(),
-  open: decimal("open", { precision: 10, scale: 2 }),
-  high: decimal("high", { precision: 10, scale: 2 }),
-  low: decimal("low", { precision: 10, scale: 2 }),
-  close: decimal("close", { precision: 10, scale: 2 }),
+  open: text("open"),
+  high: text("high"),
+  low: text("low"),
+  close: text("close"),
   volume: text("volume"),
-  changePercent: decimal("change_percent", { precision: 10, scale: 2 }),
+  changePercent: text("change_percent"),
 });
 
 export const insertStockDataSchema = createInsertSchema(stockData).omit({
