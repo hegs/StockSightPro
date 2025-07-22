@@ -71,7 +71,11 @@ export default function StockOverview({ symbol }: StockOverviewProps) {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div className="mb-8">
+      <h2 className="text-lg font-semibold text-text-primary mb-4">
+        Overview - {stockData.companyName || symbol}
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {metrics.map((metric, index) => (
         <Card key={index} className="bg-dark-secondary border-dark-surface hover:shadow-2xl transition-shadow duration-200">
           <CardContent className="p-6">
@@ -106,6 +110,7 @@ export default function StockOverview({ symbol }: StockOverviewProps) {
           </CardContent>
         </Card>
       ))}
+      </div>
     </div>
   );
 }

@@ -69,7 +69,7 @@ export default function StockSearch({ onSymbolSelected }: StockSearchProps) {
             <Input
               id="stock-symbol"
               type="text"
-              placeholder="Enter symbol (e.g., AAPL, GOOGL, TSLA)"
+              placeholder="Enter symbol (add up to 2, e.g., AAPL)"
               value={symbol}
               onChange={(e) => setSymbol(e.target.value.toUpperCase())}
               onKeyPress={handleKeyPress}

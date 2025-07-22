@@ -120,7 +120,9 @@ export default function DataTable({ symbol }: DataTableProps) {
     <Card className="bg-dark-secondary border-dark-surface shadow-xl overflow-hidden">
       <CardContent className="p-6 border-b border-dark-surface">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-          <h2 className="text-lg font-semibold text-text-primary mb-4 sm:mb-0">Historical Data</h2>
+          <h2 className="text-lg font-semibold text-text-primary mb-4 sm:mb-0">
+            Historical Data - {symbol}
+          </h2>
           <Button
             onClick={handleExportCSV}
             className="bg-accent-green hover:bg-green-600 text-white flex items-center space-x-2"
