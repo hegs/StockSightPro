@@ -6,7 +6,7 @@ import InteractiveChart from "@/components/interactive-chart";
 import DataTable from "@/components/data-table";
 
 export default function Dashboard() {
-  const [selectedSymbol, setSelectedSymbol] = useState<string>("");
+  const [selectedSymbols, setSelectedSymbols] = useState<string[]>([]);
 
   return (
     <div className="min-h-screen bg-dark-primary">
@@ -29,20 +29,29 @@ export default function Dashboard() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Stock Search Section */}
-        <StockSearch onSymbolSelected={setSelectedSymbol} />
-        
-        {selectedSymbol && (
-          <>
+        <StockSearch
+          onSymbolSelected={(symbol) =>
+            setSelectedSymbols((prev) => {
+              const sym = symbol.toUpperCase();
+              if (prev.includes(sym)) return prev;
+              if (prev.length < 2) return [...prev, sym];
+              return [prev[1], sym];
+            })
+          }
+        />
+
+        {selectedSymbols.map((sym) => (
+          <div key={sym}>
             {/* Stock Overview Cards */}
-            <StockOverview symbol={selectedSymbol} />
-            
+            <StockOverview symbol={sym} />
+
             {/* Chart Section */}
-            <InteractiveChart symbol={selectedSymbol} />
-            
+            <InteractiveChart symbol={sym} />
+
             {/* Data Table Section */}
-            <DataTable symbol={selectedSymbol} />
-          </>
-        )}
+            <DataTable symbol={sym} />
+          </div>
+        ))}
       </main>
 
       {/* Footer */}
